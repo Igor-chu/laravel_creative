@@ -3,29 +3,17 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StoreRequest;
 use App\Models\Post;
 
 
 class StoreController extends Controller
 {
 
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
 
-        $validated = request()->validate([
-
-            'title' => ['required', 'string', 'max:100'],
-
-            'content' => ['required', 'string', 'max:10000'],
-
-            'image' => ['nullable', 'string', 'max:50'],
-
-            'category_id' => ['required', 'integer'],
-
-            'tags' => ['required'],
-
-        ]);
-
+        $validated = $request->validated();
 
 //        получаем все теги у поста
         $tags = $validated['tags'];
