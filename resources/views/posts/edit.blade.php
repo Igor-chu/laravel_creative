@@ -6,11 +6,9 @@
 
         <div class="row">
 
-
-
             <div>
 
-                <a href="{{route('post.index')}}" class="btn btn-primary mb-3">Back</a>
+                <a href="{{route('post.show', $post->id)}}" class="btn btn-primary mb-3">Back</a>
 
             </div>
 
@@ -66,9 +64,9 @@
 
                     <div class="mb-3">
 
-                        <label for="category" class="form-label">Category</label>
+                        <label for="category_id" class="form-label">Category</label>
 
-                        <select name="tags" id="category" class="form-select" >
+                        <select name="category_id" id="category_id" class="form-select" >
 
                             @foreach($categories as $category)
 

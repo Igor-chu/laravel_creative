@@ -3,28 +3,19 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Post;
 
 
 class UpdateController extends Controller
 {
 
-    public function __invoke(Post $post)
+    public function __invoke(UpdateRequest $request, Post $post)
     {
 
-        $validated = request()->validate([
+//        dd($request);
 
-            'title' => ['required', 'string'],
-
-            'content' => ['required', 'string'],
-
-            'image' => ['string'],
-
-            'category_id' => '',
-
-            'tags' => '',
-
-        ]);
+        $validated = $request->validated();
 
 //        получаем все теги у поста
         $tags = $validated['tags'];
