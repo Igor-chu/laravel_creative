@@ -26,7 +26,7 @@ class Service
 
     }
 
-    public function update($validated)
+    public function update($post, $validated)
     {
 
 //        получаем все теги у поста
