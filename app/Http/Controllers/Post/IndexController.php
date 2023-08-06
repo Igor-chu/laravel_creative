@@ -19,10 +19,6 @@ class IndexController extends BaseController
 
         $posts = Post::filter($filter)->paginate(10);
 
-//        dd($posts);
-
-//        $posts = Post::paginate(20);
-//
         return view('posts.index', compact('posts'));
 
     }
