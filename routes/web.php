@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactsController;
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TradeController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-    return 'aaaaaaaaaaaaaa';
-
-});
+Route::get('/', [HomeController::class, 'index']);
 
 
 Route::group(['namespace' => '\App\Http\Controllers\Admin', 'prefix' => 'admin'], function(){
@@ -72,25 +68,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function() {
 
 //------------------------------------------------------------------------------
 
-Route::get('/trades', [TradeController::class, 'index'])->name('trade.index');
-
-Route::get('/trades/create', [TradeController::class, 'create'])->name('trade.create');
-
-Route::post('/trades', [TradeController::class, 'store'])->name('trade.store');
-
-Route::get('/trades/{trade}', [TradeController::class, 'show'])->name('trade.show');
-
-Route::get('/trades/{trade}/edit', [TradeController::class, 'edit'])->name('trade.edit');
-
-Route::patch('/trades/{trade}', [TradeController::class, 'update'])->name('trade.update');
-
-Route::delete('/trades/{trade}', [TradeController::class, 'destroy'])->name('trade.destroy');
-
-
-
-
-
-
 
 
 
@@ -98,7 +75,6 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contact.index');
 
 
+Auth::routes();
 
-
-
-Route::get('/trades', [\App\Http\Controllers\TradeController::class, 'index'])->name('trades');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
