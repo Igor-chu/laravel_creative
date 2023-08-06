@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\TradeController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +22,32 @@ Route::get('/', function () {
     return 'aaaaaaaaaaaaaa';
 
 });
+
+
+Route::group(['namespace' => '\App\Http\Controllers\Admin', 'prefix' => 'admin'], function(){
+
+    Route::group(['namespace' => '\App\Http\Controllers\Admin\Post'], function(){
+
+        Route::get('/post', 'IndexController')->name('admin.post.index');
+
+        Route::get('/post/create', 'CreateController')->name('admin.post.create');
+
+        Route::post('/post', 'StoreController')->name('admin.post.store');
+
+        Route::get('/post/{post}', 'ShowController')->name('admin.post.show');
+
+        Route::get('/post/{post}/edit', 'EditController')->name('admin.post.edit');
+
+        Route::patch('/post/{post}', 'UpdateController')->name('admin.post.update');
+
+        Route::delete('/post/{post}', 'DestroyController')->name('admin.post.delete');
+
+    });
+
+});
+
+
+
 
 Route::group(['namespace' => 'App\Http\Controllers\Post'], function() {
 
@@ -71,7 +96,6 @@ Route::delete('/trades/{trade}', [TradeController::class, 'destroy'])->name('tra
 
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contact.index');
-Route::get('/main', [MainController::class, 'index'])->name('main.index');
 
 
 
