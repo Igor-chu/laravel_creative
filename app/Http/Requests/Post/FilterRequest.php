@@ -29,6 +29,10 @@ class FilterRequest extends FormRequest
 
             'category_id' => '',
 
+            'page' => '',
+
+            'per_page' => '',
+
         ];
     }
 }

@@ -29,6 +29,8 @@ class UpdateRequest extends FormRequest
 
             'image' => ['string'],
 
+            'likes' => '',
+
             'category_id' => '',
 
             'tags' => '',

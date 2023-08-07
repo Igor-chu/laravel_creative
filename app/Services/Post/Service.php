@@ -24,6 +24,8 @@ class Service
 //        создаем запись в связаной таблице postsTags
         $post->tags()->attach($tags);
 
+        return $post;
+
     }
 
     public function update($post, $validated)
@@ -38,6 +40,8 @@ class Service
         $post->update($validated);
 
         $post->tags()->sync($tags);
+
+        return $post->fresh();
 
     }
 
