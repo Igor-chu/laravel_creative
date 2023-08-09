@@ -31,7 +31,7 @@ class UpdateRequest extends FormRequest
 
             'likes' => '',
 
-            'category_id' => '',
+            'category' => '',
 
             'tags' => '',
 
